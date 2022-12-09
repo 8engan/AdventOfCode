@@ -7,14 +7,37 @@
 #include <fstream>
 #include "../constants.h"
 
-bool checkIfContained(int left1, int left2, int right1, int right2){
-    if((right1 >= left1 && right2 <= left2) || (left1 >= right1 && left2 <=right2)){
-        return true;
+void checkIfContained(int left1, int left2, int right1, int right2, int& totalContained, int& totalOverlap){
+    
+    bool overlapAccountedFor = false;
+    if((right1 >= left1 && right2 <= left2) || (left1 >= right1 && left2 <= right2)){
+        ++totalContained;
+        ++totalOverlap;
+        overlapAccountedFor = true;
     }
-    return false;
+    if(!overlapAccountedFor){   // check for overlap if not already accounted for
+        if((left1 >= right1 && left1 <= right2) || (left2 >= right1 && left2 <= right2)){
+            ++totalOverlap;
+        }
+    }
 }
 
-int processAssignmentList(std::string inputFile){
+/*
+bool checkIfContained(int left1, int left2, int right1, int right2, bool overlapCounts = false){
+    if((right1 >= left1 && right2 <= left2) || (left1 >= right1 && left2 <= right2)){
+        return true;
+    }
+    if(overlapCounts){
+        if((left1 >= right1 && left1 <= right2) || (left2 >= right1 && left2 <= right2)){
+            return true;
+        }
+    }
+    
+    return false;
+}
+*/
+
+void processAssignmentList(std::string inputFile, int& totalContained, int& totalOverlap){
     
     
     std::ifstream ifs;
@@ -23,16 +46,18 @@ int processAssignmentList(std::string inputFile){
     std::string rightAssign = "";
     int commaPos{0};
     int dashPos{0};
-    int totalPairsMatch{0};
+    //int totalPairsMatch{0};
     int leftNum1{0};
     int leftNum2{0};
     int rightNum1{0};
     int rightNum2{0};
     bool contained = false;
+    bool overlap = false;
 
     ifs.open(inputFile);
     while (ifs.good()){
         contained = false;
+        overlap = false;
         commaPos = 0;
         dashPos = 0;
 
@@ -51,15 +76,18 @@ int processAssignmentList(std::string inputFile){
         rightNum1 = std::stoi(rightAssign.substr(0, dashPos));
         rightNum2 = std::stoi(rightAssign.substr(dashPos + 1, rightAssign.length()));
 
-        contained = checkIfContained(leftNum1, leftNum2, rightNum1, rightNum2);
-        if(contained){
-            ++totalPairsMatch;
-        }
+
+        checkIfContained(leftNum1, leftNum2, rightNum1, rightNum2, totalContained, totalOverlap);
+        //contained = checkIfContained(leftNum1, leftNum2, rightNum1, rightNum2);
+        //overlap
+        //if(contained){
+        //    ++totalContained;
+        //}
+
         
         
     }
     ifs.close();
-    return totalPairsMatch;
 }
 
 

@@ -60,8 +60,11 @@ int main(){
             }
             case 4:
             {
-                int totalContained = processAssignmentList("inputs/day4_input.txt");
-                std::cout << "Day 4 Part 1: Total assignmemnt where one fully contains the other = " << totalContained << std::endl;
+                int totalContained{0};
+                int totalOverlap{0};
+                processAssignmentList("inputs/day4_input.txt", totalContained, totalOverlap);
+                std::cout << "Day 4 Part 1: Total assignments where one fully contains the other = " << totalContained << std::endl;
+                std::cout << "Day 4 Part 1: Total assignments where one overlaps the other = " << totalOverlap << std::endl;
                 std::cout << std::endl;
                 break;
             }
