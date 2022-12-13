@@ -7,8 +7,9 @@
 #include <fstream>
 #include "../constants.h"
 
+using namespace std;
 
-int checkRucksack(std::string& rucksack1, std::string& rucksack2){
+int checkRucksack(string& rucksack1, string& rucksack2){
 
     char error{0};
     int priority{0};
@@ -34,36 +35,36 @@ int checkRucksack(std::string& rucksack1, std::string& rucksack2){
 
     if(constants::DEBUG){
         if(error > 0){
-            std::cout << std::setw(40) << std::left << "Found error in rucksack = " << error << "  with priority = " << priority << std::endl;
+            cout << setw(40) << left << "Found error in rucksack = " << error << "  with priority = " << priority << endl;
         }else{
-            std::cout << std::setw(40) << std::left << "No error found in rucksack" << priority << std::endl;
+            cout << setw(40) << left << "No error found in rucksack" << priority << endl;
         }
         
     }
     return priority;
 }
 
-void processAllRucksacks(std::string inputFile, int& totalPrio){
+void processAllRucksacks(string inputFile, int& totalPrio){
     
     
-    std::ifstream ifs;
-    std::string readRucksack;
-    std::string rucksack1;
-    std::string rucksack2;
+    ifstream ifs;
+    string readRucksack;
+    string rucksack1;
+    string rucksack2;
 
 
     ifs.open(inputFile);
     while (ifs.good()){
 
-        std::getline(ifs, readRucksack);
+        getline(ifs, readRucksack);
         rucksack1 = readRucksack.substr(0,(readRucksack.length()/2));
         rucksack2 = readRucksack.substr((readRucksack.length()/2),readRucksack.length());
 
         if(constants::DEBUG){
-            std::cout << std::setw(40) << std::left << "readRucksack = " << readRucksack << std::endl;
-            std::cout << std::setw(40) << std::left << "rucksack1 = " << rucksack1 << std::endl;
-            std::cout << std::setw(40) << std::left << "rucksack2 = " << rucksack2 << std::endl;
-            std::cout << std::endl;
+            cout << setw(40) << left << "readRucksack = " << readRucksack << endl;
+            cout << setw(40) << left << "rucksack1 = " << rucksack1 << endl;
+            cout << setw(40) << left << "rucksack2 = " << rucksack2 << endl;
+            cout << endl;
         }
 
         totalPrio += checkRucksack(rucksack1, rucksack2);
@@ -73,13 +74,13 @@ void processAllRucksacks(std::string inputFile, int& totalPrio){
 
 }
 
-void processGroupOfThreeRucksacks(std::string inputFile, int& totalPrio){
+void processGroupOfThreeRucksacks(string inputFile, int& totalPrio){
     
     
-    std::ifstream ifs;
-    std::string rucksack1;
-    std::string rucksack2;
-    std::string rucksack3;
+    ifstream ifs;
+    string rucksack1;
+    string rucksack2;
+    string rucksack3;
     char badgeItem{0};
     bool badgeFound = false;
     int lowerCaseOffSet{96};
@@ -94,11 +95,11 @@ void processGroupOfThreeRucksacks(std::string inputFile, int& totalPrio){
         ++groupNum;
 
         if(constants::DEBUG){
-            std::cout << "Processing group " << groupNum << std::endl;
+            cout << "Processing group " << groupNum << endl;
         }
-        std::getline(ifs, rucksack1);
-        std::getline(ifs, rucksack2);
-        std::getline(ifs, rucksack3);
+        getline(ifs, rucksack1);
+        getline(ifs, rucksack2);
+        getline(ifs, rucksack3);
 
         for(size_t i{0}; i < rucksack1.length(); i++){
             for(size_t j{0}; j < rucksack2.length(); j++){
@@ -123,7 +124,7 @@ void processGroupOfThreeRucksacks(std::string inputFile, int& totalPrio){
         }
         // rudimentary check for error in file, i.e. group of three does not share item
         if(!badgeFound){
-            std::cout << "No common badgeitem found, check input file. Exiting program." << std::endl;
+            cout << "No common badgeitem found, check input file. Exiting program." << endl;
             exit(1);
         }
 
@@ -138,8 +139,8 @@ void processGroupOfThreeRucksacks(std::string inputFile, int& totalPrio){
         
         totalPrio += priority;
         if(constants::DEBUG){
-            std::cout << "Found common item " << badgeItem << " with priority " << priority << ". Total prio now = " << totalPrio << std::endl;
-            std::cout << std::endl;
+            cout << "Found common item " << badgeItem << " with priority " << priority << ". Total prio now = " << totalPrio << endl;
+            cout << endl;
         }
         
     }

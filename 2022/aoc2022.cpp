@@ -3,34 +3,36 @@
 #include <vector>
 #include "alldays.h"
 
+using namespace std;
 
 
 int main(){
 
     int dayToRun{0};
     bool choiceLoop = true;
+    string crateString;
 
-    std::cout << "Welcome to my implementation of Advent of Code 2022!" << std::endl;
+    cout << "Welcome to my implementation of Advent of Code 2022!" << endl;
     
     while(choiceLoop){
-        std::cout << "Please choose what day to run [1-25, 0 to quit]: ";
-        std::cin >> dayToRun;
+        cout << "Please choose what day to run [1-25, 0 to quit]: ";
+        cin >> dayToRun;
         switch(dayToRun){
             case 1:
             {
                 int maxCalorieCount{0};
                 int topOne{};
                 int topThree{};
-                std::vector<int> elvesVector;
+                vector<int> elvesVector;
                 
                 // Create vector of calorie counts from input file
                 elvesVector = getElvesVector("inputs/day1_input.txt");
                 topOne = getCalorieCount(elvesVector, 1);
                 topThree = getCalorieCount(elvesVector, 3);
 
-                std::cout << "Day 1 Part 1: Top 1 elf calorie count = " << topOne << std::endl;
-                std::cout << "Day 1 Part 2: Top 2 elf calorie count = " << topThree << std::endl;   
-                std::cout << std::endl;     
+                cout << "Day 1 Part 1: Top 1 elf calorie count = " << topOne << endl;
+                cout << "Day 1 Part 2: Top 2 elf calorie count = " << topThree << endl;   
+                cout << endl;     
                 break;
             }     
             case 2:
@@ -41,21 +43,21 @@ int main(){
                 totalScorePart1 = processStrategyPart1("inputs/day2_input.txt");
                 totalScorePart2 = processStrategyPart2("inputs/day2_input.txt");
 
-                std::cout << "Day 2 Part 1: Total score calculated from file for day2 part 1 of the problem = " << totalScorePart1 << std::endl;
-                std::cout << "Day 2 Part 2: Total score calculated from file for day2 part 2 of the problem = " << totalScorePart2 << std::endl;
-                std::cout << std::endl;
+                cout << "Day 2 Part 1: Total score calculated from file for day2 part 1 of the problem = " << totalScorePart1 << endl;
+                cout << "Day 2 Part 2: Total score calculated from file for day2 part 2 of the problem = " << totalScorePart2 << endl;
+                cout << endl;
                 break;
             }
             case 3:
             {
                 int totalPrio{0};
                 processAllRucksacks("inputs/day3_input.txt", totalPrio);
-                std::cout << "Day 3 Part 1: Total prio score found when processing rucksacks = " << totalPrio << std::endl;
+                cout << "Day 3 Part 1: Total prio score found when processing rucksacks = " << totalPrio << endl;
 
                 totalPrio = 0;  // reset total prio
                 processGroupOfThreeRucksacks("inputs/day3_input.txt", totalPrio);
-                std::cout << "Day 3 Part 2: Total prio score found when processing rucksacks in groups of three = " << totalPrio << std::endl;
-                std::cout << std::endl;
+                cout << "Day 3 Part 2: Total prio score found when processing rucksacks in groups of three = " << totalPrio << endl;
+                cout << endl;
                 break;
             }
             case 4:
@@ -63,17 +65,27 @@ int main(){
                 int totalContained{0};
                 int totalOverlap{0};
                 processAssignmentList("inputs/day4_input.txt", totalContained, totalOverlap);
-                std::cout << "Day 4 Part 1: Total assignments where one fully contains the other = " << totalContained << std::endl;
-                std::cout << "Day 4 Part 1: Total assignments where one overlaps the other = " << totalOverlap << std::endl;
-                std::cout << std::endl;
+                cout << "Day 4 Part 1: Total assignments where one fully contains the other = " << totalContained << endl;
+                cout << "Day 4 Part 1: Total assignments where one overlaps the other = " << totalOverlap << endl;
+                cout << endl;
                 break;
             }
             case 5:
             {
+                crateString = processStackchart("inputs/day5_input.txt");
+                cout << "Day 5 Part 1: String representing crates on top of each stack when using crane 9000 = " << crateString << endl;
+                crateString = processStackchart("inputs/day5_input.txt", 9001);
+                cout << "Day 5 Part 2: String representing crates on top of each stack when using crane 9001 = " << crateString << endl;
+
                 break;
             }
             case 6:
             {
+                int pos = findMarker("inputs/day6_input.txt", 4);
+                cout << "Day 6 Part 1: Start-of-packet sequence found at position: " << pos << endl;
+                pos = findMarker("inputs/day6_input.txt", 14);
+                cout << "Day 6 Part 2: Start-of-packet sequence found at position: " << pos << endl;
+
                 break;
             }
             case 7:
@@ -158,7 +170,7 @@ int main(){
         }
     }
     
-    std::cout << "Exiting program, thanks for playing :)" << std::endl;
+    cout << "Exiting program, thanks for playing :)" << endl;
     return 0;
     
     

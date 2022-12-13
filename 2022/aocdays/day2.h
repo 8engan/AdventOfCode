@@ -4,12 +4,11 @@
 #include <iomanip>
 #include <fstream>
 #include <string>
-#include <vector>
 #include <algorithm>
 #include <functional>
 #include "../constants.h"
 
-
+using namespace std;
 
 
 /**
@@ -20,7 +19,7 @@
  * @param oppHand Char representing what hand the opponent plays (A Paper, B Rock, C Scissors)
  * @param myHand Char representing what hand I play (X Paper, Y Rock, Z Scissors)
  */
-void processRound(std::string& debugStringHands, std::string& debugStringPoints, int& totalScore, char oppHand, char myHand){
+void processRound(string& debugStringHands, string& debugStringPoints, int& totalScore, char oppHand, char myHand){
     // Figure out what hand wins
     if (oppHand == 'A'){ // Opponent plays Rock
         if (myHand == 'X')
@@ -83,7 +82,7 @@ void processRound(std::string& debugStringHands, std::string& debugStringPoints,
     }
 }
 
-int processStrategyPart1(std::string inputFile)
+int processStrategyPart1(string inputFile)
 {
 
     int totalScore{0};
@@ -93,10 +92,10 @@ int processStrategyPart1(std::string inputFile)
     char oppHand{0};
     char myHand{0};
 
-    std::ifstream ifs;
-    std::string readLine;
-    std::string debugStringHands;
-    std::string debugStringPoints;
+    ifstream ifs;
+    string readLine;
+    string debugStringHands;
+    string debugStringPoints;
 
     ifs.open(inputFile);
 
@@ -105,7 +104,7 @@ int processStrategyPart1(std::string inputFile)
     {
         while (ifs.good())
         {
-            std::getline(ifs, readLine);
+            getline(ifs, readLine);
             debugStringHands = readLine;
             debugStringPoints = "";
 
@@ -117,19 +116,19 @@ int processStrategyPart1(std::string inputFile)
             
             processRound(debugStringHands, debugStringHands, totalScore, oppHand, myHand);
             if(constants::DEBUG){
-                std::cout << "Part1: " << std::setw(50) << std::left << debugStringHands << debugStringPoints << " - totalScore = " << totalScore << std::endl;
+                cout << "Part1: " << setw(50) << left << debugStringHands << debugStringPoints << " - totalScore = " << totalScore << endl;
             }
         }
     }
     else
     {
-        std::cout << "File not open" << std::endl;
+        cout << "File not open" << endl;
     }
     ifs.close();
     return totalScore;
 }
 
-int processStrategyPart2(std::string inputFile)
+int processStrategyPart2(string inputFile)
 {
 
     int totalScore{0};
@@ -141,10 +140,10 @@ int processStrategyPart2(std::string inputFile)
     char myHand{0};
     char roundResult{0};
 
-    std::ifstream ifs;
-    std::string readLine;
-    std::string debugStringHands;
-    std::string debugStringPoints;
+    ifstream ifs;
+    string readLine;
+    string debugStringHands;
+    string debugStringPoints;
 
     ifs.open(inputFile);
 
@@ -153,7 +152,7 @@ int processStrategyPart2(std::string inputFile)
     {
         while (ifs.good())
         {
-            std::getline(ifs, readLine);
+            getline(ifs, readLine);
             debugStringHands = readLine;
             debugStringPoints = "";
 
@@ -202,14 +201,14 @@ int processStrategyPart2(std::string inputFile)
 
             processRound(debugStringHands, debugStringHands, totalScore, oppHand, myHand);
             if(constants::DEBUG){
-                std::cout << "Part2:" << std::setw(50) << std::left << debugStringHands << debugStringPoints << " - totalScore = " << totalScore << std::endl;
+                cout << "Part2:" << setw(50) << left << debugStringHands << debugStringPoints << " - totalScore = " << totalScore << endl;
             }
             
         }
     }
     else
     {
-        std::cout << "File not open" << std::endl;
+        cout << "File not open" << endl;
     }
     ifs.close();
     return totalScore;

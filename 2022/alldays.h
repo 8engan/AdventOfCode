@@ -5,8 +5,8 @@
 #include "./aocdays/day2.h"
 #include "./aocdays/day3.h"
 #include "./aocdays/day4.h"
-
-
+#include "./aocdays/day5.h"
+#include "./aocdays/day6.h"
 #include "constants.h"
 
 #endif
