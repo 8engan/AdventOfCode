@@ -1,5 +1,4 @@
-#ifndef DAY6_H
-#define DAY6_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -61,6 +60,3 @@ int findMarker(string inputFile, int numMarkerChars){
 
 }
 
-
-
-#endif
