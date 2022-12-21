@@ -1,5 +1,4 @@
-#ifndef DAY3_H
-#define DAY3_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -148,4 +147,3 @@ void processGroupOfThreeRucksacks(string inputFile, int& totalPrio){
 
 }
 
-#endif

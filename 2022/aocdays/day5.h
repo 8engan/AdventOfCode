@@ -1,5 +1,4 @@
-#ifndef DAY5_H
-#define DAY5_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -125,5 +124,3 @@ string processStackchart(string inputFile, int craneModel=9000){
 }
 
 
-
-#endif

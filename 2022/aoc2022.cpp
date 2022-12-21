@@ -12,7 +12,7 @@ int main(){
     bool choiceLoop = true;
     string crateString;
 
-    cout << "Welcome to my implementation of Advent of Code 2022!" << endl;
+    cout << "*** Welcome to my implementation of Advent of Code 2022! ***" << endl;
     
     while(choiceLoop){
         cout << "Please choose what day to run [1-25, 0 to quit]: ";
@@ -90,6 +90,14 @@ int main(){
             }
             case 7:
             {
+                int totalSize{0};
+                directory rootDir;
+                vector<int> dirSizeVec;
+                processDay7Output(rootDir, "inputs/day7_input.txt");
+                totalSize = getSumDirsBelowSize(rootDir, 100000);
+                cout << "Day 7 Part 1: Sum of all directories below size of 10000 is: " << totalSize << endl;
+                totalSize = findDirSize(rootDir);
+                cout << "Day 7 Part 2: Total size of directory to delete to free up space = " << totalSize << endl;
                 break;
             }
             case 8:

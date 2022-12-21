@@ -1,5 +1,4 @@
-#ifndef DAY1_H
-#define DAY1_H
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -52,6 +51,3 @@ vector<int> getElvesVector(string inputFile){
     }
     return elvesVector;
 }
-
-
-#endif

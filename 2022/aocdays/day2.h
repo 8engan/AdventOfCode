@@ -1,5 +1,4 @@
-#ifndef DAY2_H
-#define DAY2_H
+#pragma once
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -215,4 +214,3 @@ int processStrategyPart2(string inputFile)
 }
 
 
-#endif

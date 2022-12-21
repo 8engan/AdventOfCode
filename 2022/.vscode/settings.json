@@ -57,5 +57,6 @@
         "regex": "cpp",
         "xlocbuf": "cpp",
         "xlocmes": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "enabled"
 }

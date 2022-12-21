@@ -1,5 +1,4 @@
-#ifndef DAY4_H
-#define DAY4_H
+#pragma once
 
 #include <iostream>
 #include <iomanip>
@@ -78,4 +77,3 @@ void processAssignmentList(string inputFile, int& totalContained, int& totalOver
 }
 
 
-#endif
