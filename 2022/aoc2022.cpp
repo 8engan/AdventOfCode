@@ -102,6 +102,12 @@ int main(){
             }
             case 8:
             {
+                int visibleTrees{0};
+                int scenicScore{0};
+
+                processTreeInput("inputs/day8_input.txt", visibleTrees, scenicScore);
+                cout << "Day 8 Part 1: Number of trees visible from the grid : " << visibleTrees << endl;
+                cout << "Day 8 Part 2: Scenic score given input : " << scenicScore << endl;
                 break;
             }
             case 9:
