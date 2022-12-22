@@ -8,8 +8,6 @@
 #include "../constants.h"
 #include "../misc.h"
 
-
-
 using namespace std; 
 
 struct file{
@@ -45,7 +43,6 @@ bool checkDirExist(vector<directory>* subDirs, string dirToCheck){
     return false;
 }
 
-//directory returnNavigateToDir(directory& currDir, string navDir){
 directory* returnNavigateToDir(directory* currDir, string navDir){
 
     for(int i{0}; i < currDir->subDirectories.size(); i++){
@@ -134,7 +131,7 @@ void processDay7Output(directory& rootDir,string inputFile){
             if(lineNum == 0){
                 if(commandVec[1] != "cd" && commandVec[2] != "/"){
                     cout << "1st line of input is non valid, exiting processOutput" << endl;
-                    //return nullptr;
+                    
                 }else{      // create root level node
                     tmpDir = directory();
                     rootDir = tmpDir;
