@@ -112,6 +112,9 @@ int main(){
             }
             case 9:
             {
+                int cellsVisited{0};
+                cellsVisited = processMoveInput("inputs/day9_input.txt");
+                cout << "Day 9 Part 1: Positions visited at least once : " << cellsVisited << endl;
                 break;
             }
             case 10:
