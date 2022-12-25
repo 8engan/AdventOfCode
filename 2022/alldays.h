@@ -9,6 +9,7 @@
 #include "./aocdays/day6.h"
 #include "./aocdays/day7.h"
 #include "./aocdays/day8.h"
+#include "./aocdays/day9.h"
 
 #include "constants.h"
 

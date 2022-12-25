@@ -18,8 +18,6 @@ vector<string> getStrVector(string strToSplit, char delim){
     }
 
     return returnVec;
-
 }
-
 
 #endif
