@@ -3,6 +3,6 @@
 
 namespace constants
 {
-    const bool DEBUG{true};
+    const bool DEBUG{false};
 }
 #endif
